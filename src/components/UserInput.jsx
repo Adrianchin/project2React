@@ -114,7 +114,7 @@ function UserInput(props) {
           </SubmitTempButton>
         </TemperatureSubmitRow>
       </TemperatureSubmitContainer>
-      {warningTempBool
+      {!warningTempBool
       ?<div>
           <h3>{`PLEASE ENTER LOWER BOUND TEMPERATURE < or = UPPER BOUND`}</h3>
       </div>
