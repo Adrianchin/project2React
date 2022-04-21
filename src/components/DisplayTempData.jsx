@@ -33,7 +33,7 @@ function DisplayTempData(props) {
     <>
       <div>
         <div className="center">
-          <h1 id="title">Return Table</h1>
+          <h2 id="title">Daily Temperature vs Shelter Table</h2>
         </div>
         <div className="center">
           <table id="temptable">

@@ -1,7 +1,6 @@
 import React, {useState} from "react"
 import './App.css';
-import UserInput from "./components/UserInput";
-import DisplayTempData from "./components/DisplayTempData";
+import HomePage from "./pages/HomePage";
 
 function App() {
 
@@ -9,16 +8,10 @@ function App() {
 
   return (
     <div>
-      <div>
-      <UserInput
-      setTempDataReturn={setTempDataReturn}
+      <HomePage
+      setTempDataReturn = {setTempDataReturn}
+      tempDataReturn = {tempDataReturn}
       />
-      </div>
-      <div>
-      <DisplayTempData
-      tempDataReturn={tempDataReturn}
-      />
-      </div>
     </div>
   );
 }
