@@ -13,8 +13,8 @@ function UserInput(props) {
   const setTempDataReturn = props.setTempDataReturn;
 
   const [tempControl, setTempControl] = useState("Temperature Less Than");
-  const [yearControlLower, setYearControlLower] = useState(2021);
-  const [yearControlUpper, setYearControlUpper] = useState(2016);
+  const [year, setYear] = useState(2021);
+  const [month, setMonth] = useState(1);
   const [userInput, setUserInput] = useState(null);
   const [warningTempBool, setwarningTempBool] = useState(false)
 
@@ -26,23 +26,23 @@ function UserInput(props) {
     setTempControl(event.target.value);
   };
 
-  const onYearControlLower = (event) => {
-    setYearControlLower(event.target.value);
+  const onYear = (event) => {
+    setYear(event.target.value);
   };
 
-  const onYearControlUpper = (event) => {
-    setYearControlUpper(event.target.value);
+  const onMonth = (event) => {
+    setMonth(event.target.value);
   };
 
   function onTextSubmit(event) {
     event.preventDefault();
-    if (yearControlLower <= yearControlUpper) {
+    if (userInput) {
     setwarningTempBool(false)
       let tempData = JSON.stringify({
         temperatureInput: userInput,
         temperatureControl: tempControl,
-        yearLowerBound: yearControlLower,
-        yearUpperBound: yearControlUpper,
+        year: year,
+        month: month,
       });
       let submitUserTemperatureEndpoint =
         "http://localhost:3000/usertemperaturesubmit";
@@ -62,6 +62,7 @@ function UserInput(props) {
       }
       submitUserTemperature();
     } else {
+      console.log("Test")
         setwarningTempBool(true);
     }
   }
@@ -80,9 +81,8 @@ function UserInput(props) {
         </div>
         <TemperatureControlRowTop>
           <TemperatureSubmitCol>
-            <p>From</p>
-            <select value={yearControlUpper} onChange={onYearControlUpper}>
-              <option value={2022}>2022</option>
+            <p>Year</p>
+            <select value={year} onChange={onYear}>
               <option value={2021}>2021</option>
               <option value={2020}>2020</option>
               <option value={2019}>2019</option>
@@ -94,15 +94,20 @@ function UserInput(props) {
         </TemperatureControlRowTop>
         <TemperatureControlRowBottom>
           <TemperatureSubmitCol>
-            <p>To</p>
-            <select value={yearControlLower} onChange={onYearControlLower}>
-              <option value={2022}>2022</option>
-              <option value={2021}>2021</option>
-              <option value={2020}>2020</option>
-              <option value={2019}>2019</option>
-              <option value={2018}>2018</option>
-              <option value={2017}>2017</option>
-              <option value={2016}>2016</option>
+            <p>Month</p>
+            <select value={month} onChange={onMonth}>
+              <option value={1}>Jan</option>
+              <option value={2}>Feb</option>
+              <option value={3}>Mar</option>
+              <option value={4}>Apr</option>
+              <option value={5}>May</option>
+              <option value={6}>Jun</option>
+              <option value={7}>Jul</option>
+              <option value={8}>Aug</option>
+              <option value={9}>Sep</option>
+              <option value={10}>Oct</option>
+              <option value={11}>Nov</option>
+              <option value={12}>Dec</option>
             </select>
           </TemperatureSubmitCol>
         </TemperatureControlRowBottom>
@@ -114,9 +119,9 @@ function UserInput(props) {
           </SubmitTempButton>
         </TemperatureSubmitRow>
       </TemperatureSubmitContainer>
-      {!warningTempBool
+      {warningTempBool
       ?<div>
-          <h3>{`PLEASE ENTER LOWER BOUND TEMPERATURE < or = UPPER BOUND`}</h3>
+          <h3>{`PLEASE ENTER A TEMPERATURE`}</h3>
       </div>
       :<div>
 
