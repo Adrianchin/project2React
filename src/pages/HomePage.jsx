@@ -16,9 +16,11 @@ function HomePage(props) {
       <PageContainer>
         <UserInput setTempDataReturn={setTempDataReturn} />
       </PageContainer>
-      <TableContainer>
+      {tempDataReturn
+      ?<TableContainer>
         <DisplayTempData tempDataReturn={tempDataReturn} />
       </TableContainer>
+      :<></>}
     </Background>
   );
 }
