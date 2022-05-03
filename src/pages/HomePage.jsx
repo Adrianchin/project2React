@@ -12,7 +12,8 @@ function HomePage(props) {
     const tempDataReturn = props.tempDataReturn;
 
   return (
-    <Background>
+    <>
+    <Background/>
       <PageContainer>
         <UserInput setTempDataReturn={setTempDataReturn} />
       </PageContainer>
@@ -21,7 +22,7 @@ function HomePage(props) {
         <DisplayTempData tempDataReturn={tempDataReturn} />
       </TableContainer>
       :<></>}
-    </Background>
+      </>
   );
 }
 

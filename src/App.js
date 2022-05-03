@@ -1,10 +1,13 @@
 import React, {useState} from "react"
 import './App.css';
 import HomePage from "./pages/HomePage";
+import constData from "./components/data/merged.json"
 
 function App() {
 
-  const [tempDataReturn, setTempDataReturn] = useState(null);
+  const data = constData
+
+  const [tempDataReturn, setTempDataReturn] = useState(data);
 
   /*const [tempDataReturn, setTempDataReturn] = useState([
     {

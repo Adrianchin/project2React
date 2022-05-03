@@ -15,12 +15,22 @@ function DisplayTempData(props) {
     {
       Header: "Date",
       Footer: "Date",
-      accessor: "date",
+      accessor: "mergeDate",
     },
     {
-      Header: "Temperature",
-      Footer: "Temperature",
-      accessor: "temperature",
+      Header: "Mean T",
+      Footer: "Mean T",
+      accessor: "MEAN_TEMPERATURE",
+    },
+    {
+      Header: "Min T",
+      Footer: "Min T",
+      accessor: "MIN_TEMPERATURE",
+    },
+    {
+      Header: "Max T",
+      Footer: "Max T",
+      accessor: "MAX_TEMPERATURE",
     },
     {
       Header: "Date Info",
@@ -76,14 +86,14 @@ function DisplayTempData(props) {
       ],
     },
   ];
-if (tempDataReturn){
-  //Used for date conversion
-  const dateOptions = { timeZone: 'UTC', month: 'long', day: 'numeric', year: 'numeric' };
-  const dateFormatter = new Intl.DateTimeFormat('en-US', dateOptions);
-  for (const obj of tempDataReturn){
-    obj.date = dateFormatter.format(new Date('2019-06-01T00:00:00.000+00:00'));
-  }
-}
+// if (tempDataReturn){
+//   //Used for date conversion
+//   const dateOptions = { timeZone: 'UTC', month: 'long', day: 'numeric', year: 'numeric' };
+//   const dateFormatter = new Intl.DateTimeFormat('en-US', dateOptions);
+//   for (const obj of tempDataReturn){
+//     obj.date = dateFormatter.format(new Date());
+//   }
+// }
 
   const data = useMemo(() => tempDataReturn,
   []
@@ -247,7 +257,7 @@ if (tempDataReturn){
               value={pageSize}
               onChange={(event) => setPageSize(Number(event.target.value))}
             >
-              {[25, 50, 100].map((pageSize) => (
+              {[20, 50, 100].map((pageSize) => (
                 <option key={pageSize} value={pageSize}>
                   Show {pageSize}
                 </option>
