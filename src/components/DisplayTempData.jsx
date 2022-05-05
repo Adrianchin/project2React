@@ -15,7 +15,7 @@ function DisplayTempData(props) {
     {
       Header: "Date",
       Footer: "Date",
-      accessor: "mergeDate",
+      accessor: "weatherMergeDate",
     },
     {
       Header: "Mean T",

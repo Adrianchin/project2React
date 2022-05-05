@@ -2,12 +2,11 @@ import React, {useState} from "react"
 import './App.css';
 import HomePage from "./pages/HomePage";
 import constData from "./components/data/merged.json"
+import dataDec from "./components/data/filtered_Dec2021_-30.json";
 
 function App() {
 
-  const data = constData
-
-  const [tempDataReturn, setTempDataReturn] = useState(data);
+  const [tempDataReturn, setTempDataReturn] = useState(null);
 
   /*const [tempDataReturn, setTempDataReturn] = useState([
     {

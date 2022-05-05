@@ -8,6 +8,9 @@ import {
   TemperatureControlRowTop,
   TemperatureControlRowBottom
 } from "./ComponentElements";
+import dataDec from "./data/filtered_Dec2021_-30.json";
+import dataJan from "./data/filtered_Jan2022_-20.json";
+import dataNov from "./data/filtered_Nov2021_-12.json";
 
 function UserInput(props) {
   const setTempDataReturn = props.setTempDataReturn;
@@ -36,6 +39,14 @@ function UserInput(props) {
 
   function onTextSubmit(event) {
     event.preventDefault();
+    if (month==12){
+      setTempDataReturn(dataDec)
+    }else if(month==1){
+      setTempDataReturn(dataJan)
+    }else if(month==11){
+      setTempDataReturn(dataNov)
+    }
+    /*
     if (userInput) {
     setwarningTempBool(false)
       let tempData = JSON.stringify({
@@ -63,8 +74,9 @@ function UserInput(props) {
       submitUserTemperature();
     } else {
       console.log("Test")
-        setwarningTempBool(true);
+      setwarningTempBool(true);
     }
+    */
   }
 
   return (
